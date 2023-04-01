@@ -48,7 +48,7 @@ pipeline{
         }
 
         // Stage4 : Print some information
-        stage ('Deploy'){
+        stage ('Pritin Environment variables'){
             steps {
                 echo "Artifact ID is '${ArtifactId}'"
                 echo "Version ID is '${VersionId}'"
