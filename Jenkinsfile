@@ -40,27 +40,27 @@ pipeline{
                 }
 
         // Stage3 : Publish the artifacts to Nexus
-        stage ('Publish to Nexus'){
-            steps {
-                script {
+        // stage ('Publish to Nexus'){
+        //     steps {
+        //         script {
 
-                def NexusRepo = Version.endsWith("SNAPSHOT") ? "VinaysDevOpsLab-SNAPSHOT" : "VinaysDevOpsLab-RELEASE"
+        //         def NexusRepo = Version.endsWith("SNAPSHOT") ? "VinaysDevOpsLab-SNAPSHOT" : "VinaysDevOpsLab-RELEASE"
 
-                nexusArtifactUploader artifacts: 
-                [[artifactId: "${ArtifactId}", 
-                classifier: '', 
-                file: "target/${ArtifactId}-${Version}.war", 
-                type: 'war']],
-                credentialsId: 'c5ec9e0b-56a3-4895-b59f-5fc2fdf370ab',
-                groupId: "${GroupId}",
-                nexusUrl: '172.20.10.61:8081',
-                nexusVersion: 'nexus3', 
-                protocol: 'http', 
-                repository: "${NexusRepo}", 
-                version: "${Version}"
-             }
-            }
-        }
+        //         nexusArtifactUploader artifacts: 
+        //         [[artifactId: "${ArtifactId}", 
+        //         classifier: '', 
+        //         file: "target/${ArtifactId}-${Version}.war", 
+        //         type: 'war']],
+        //         credentialsId: 'c5ec9e0b-56a3-4895-b59f-5fc2fdf370ab',
+        //         groupId: "${GroupId}",
+        //         nexusUrl: '172.20.10.61:8081',
+        //         nexusVersion: 'nexus3', 
+        //         protocol: 'http', 
+        //         repository: "${NexusRepo}", 
+        //         version: "${Version}"
+        //      }
+        //     }
+        // }
 
         // Stage 5 : Deploying the build artifact to Apache Tomcat
         stage ('Deploy to Tomcat'){
